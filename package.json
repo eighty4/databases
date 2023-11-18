@@ -30,11 +30,11 @@
     "dev:start": "tsx dev/start.ts"
   },
   "dependencies": {
+    "@types/dockerode": "^3.3.23",
+    "@types/node": "^20.9.2",
     "dockerode": "^4.0.0"
   },
   "devDependencies": {
-    "@types/dockerode": "^3.3.23",
-    "@types/node": "^20.9.0",
     "tsx": "^4.1.2",
     "typescript": "^5.2.2"
   },
