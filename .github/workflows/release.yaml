@@ -27,9 +27,10 @@ jobs:
 
   check-semver-valid:
     runs-on: ubuntu-latest
-    if: ${{github.event_name}} == 'workflow_call'
     steps:
-      - run: |
+      - name: validate only prerelease semver bump for publishing @next
+        run: |
+          [[ ${{github.event_name}} != "push" ]] && exit 0
           [[ $SEMVER_BUMP = "prerelease" ]] && exit 0 || exit 1
 
   verified:
