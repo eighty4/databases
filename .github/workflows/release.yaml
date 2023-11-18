@@ -102,7 +102,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: corepack enable && corepack prepare pnpm@latest --activate
       - name: deps
-        run: pnpm i
+        run: pnpm i -P
       - name: build
         run: pnpm build
       - name: publish
