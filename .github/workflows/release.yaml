@@ -18,6 +18,8 @@ on:
           - minor
           - patch
 
+concurrency: release
+
 env:
   SEMVER_BUMP: ${{inputs.semver-bump}}
 
