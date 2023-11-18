@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - ".*ignore"
+
+jobs:
+
+  publish:
+    name: publish @next to npm
+    uses: ./.github/workflows/release.yaml
+    secrets: inherit
+    with:
+      semver-bump: prerelease

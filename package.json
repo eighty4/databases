@@ -1,0 +1,50 @@
+{
+  "name": "@eighty4/databases",
+  "version": "0.0.3-1",
+  "description": "Management APIs for local database-driven development",
+  "keywords": [
+    "cassandra",
+    "cockroachdb",
+    "development",
+    "devtool",
+    "docker",
+    "elasticsearch",
+    "mongodb",
+    "mssql",
+    "mysql",
+    "postgres",
+    "postgresql",
+    "schema",
+    "scylladb",
+    "sqlserver"
+  ],
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build",
+    "check": "tsc --noEmit",
+    "dev:list": "tsx dev/list.ts",
+    "dev:migrate": "tsx dev/migrate.ts",
+    "dev:start": "tsx dev/start.ts"
+  },
+  "dependencies": {
+    "dockerode": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/dockerode": "^3.3.23",
+    "@types/node": "^20.9.0",
+    "tsx": "^4.1.2",
+    "typescript": "^5.2.2"
+  },
+  "files": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "README.md",
+    "tsconfig.json",
+    "src/*.ts",
+    "lib/*.d.ts",
+    "lib/*.js"
+  ]
+}
