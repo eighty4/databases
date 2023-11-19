@@ -54,7 +54,7 @@ export function pingPostgres(props: PostgresProps): Promise<PingResult> {
                     }
                 }
                 result = {
-                    engine: 'postgresql',
+                    engine: 'postgres',
                     errorMessage,
                     verified: {
                         database: true,
@@ -67,7 +67,7 @@ export function pingPostgres(props: PostgresProps): Promise<PingResult> {
                 //  https://www.postgresql.org/docs/current/sasl-authentication.html
                 //  https://www.postgresql.org/docs/current/protocol-message-formats.html
                 result = {
-                    engine: 'postgresql',
+                    engine: 'postgres',
                     verified: {
                         database: true,
                         port: true,
