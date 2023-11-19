@@ -1,3 +1,20 @@
-type Database = 'postgresql'
+export type Database =
+    'cassandra'
+    | 'cockroach'
+    | 'elasticsearch'
+    | 'mongo'
+    | 'mssql'
+    | 'mysql'
+    | 'postgres'
+    | 'scylla'
 
-export default Database
+export const supportedDatabases: Array<Database> = [
+    'cassandra',
+    'cockroach',
+    'elasticsearch',
+    'mongo',
+    'mssql',
+    'mysql',
+    'postgres',
+    'scylla',
+]

@@ -1,4 +1,4 @@
-import type Database from './Database.js'
+import type {Database} from './Database.js'
 
 export default interface PingResult {
     engine: Database

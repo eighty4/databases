@@ -24,7 +24,7 @@ export function pingPostgres(props: PostgresProps): Promise<PingResult> {
         })
         socket.on('error', (e: any) => {
             result = {
-                engine: 'postgresql',
+                engine: 'postgres',
                 errorMessage: e.message
             }
             closeSocketAndPromise()
