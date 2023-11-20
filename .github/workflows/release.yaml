@@ -35,16 +35,20 @@ jobs:
       - name: validate only prerelease semver bump for publishing @next
         run: |
           [[ ${{github.event_name}} == "push" ]] && exit 0
-          [[ $SEMVER_BUMP = "prerelease" ]] && exit 1 || exit 0
+          [[ $SEMVER_BUMP = "prerelease" ]] && exit 1
       - name: validate changesets for release
         run: |
-          [[ ${{github.event_name}} == "push" ]] && exit 0
+          [[ $SEMVER_BUMP == "prerelease" ]] && exit 0
           git fetch --tags
           git tag
           git --version
           VERSION=$(npm version $SEMVER_BUMP --no-git-tag-version)
+          echo "version=$VERSION"
           PRIOR_RELEASE_TAG=$(curl -s https://api.github.com/repos/eighty4/databases/releases | jq -r '.[] | select(.prerelease == false) | .tag_name')
-          git diff $(git rev-list -n 1 "$PRIOR_RELEASE_TAG") -- CHANGELOG.md | grep "## $VERSION"
+          PRIOR_RELEASE_SHA=$(git rev-list -n 1 "$PRIOR_RELEASE_TAG")
+          echo "sha=$PRIOR_RELEASE_SHA"
+          echo "tag=$PRIOR_RELEASE_TAG"
+          git diff $PRIOR_RELEASE_SHA -- CHANGELOG.md | grep "## $VERSION"
 
   verified:
     uses: ./.github/workflows/verify.yaml
