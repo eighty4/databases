@@ -41,9 +41,11 @@ jobs:
       - name: validate changesets for release
         run: |
           [[ ${{github.event_name}} == "push" ]] && exit 0
+          git tag
+          git --version
           VERSION=$(npm version $SEMVER_BUMP --no-git-tag-version)
           PRIOR_RELEASE_TAG=$(curl -s https://api.github.com/repos/eighty4/databases/releases | jq -r '.[] | select(.prerelease == false) | .tag_name')
-          git diff $(git rev-list -n 1 "$PRIOR_RELEASE_TAG") CHANGELOG.md | grep "## $VERSION"
+          git diff $(git rev-list -n 1 "$PRIOR_RELEASE_TAG") -- CHANGELOG.md | grep "## $VERSION"
 
   verified:
     uses: ./.github/workflows/verify.yaml
