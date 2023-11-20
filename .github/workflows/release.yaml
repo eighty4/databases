@@ -41,6 +41,7 @@ jobs:
       - name: validate changesets for release
         run: |
           [[ ${{github.event_name}} == "push" ]] && exit 0
+          git pull
           git tag
           git --version
           VERSION=$(npm version $SEMVER_BUMP --no-git-tag-version)
