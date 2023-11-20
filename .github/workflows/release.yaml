@@ -29,8 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-tags: true
       - uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -41,7 +39,7 @@ jobs:
       - name: validate changesets for release
         run: |
           [[ ${{github.event_name}} == "push" ]] && exit 0
-          git pull
+          git fetch --tags
           git tag
           git --version
           VERSION=$(npm version $SEMVER_BUMP --no-git-tag-version)
