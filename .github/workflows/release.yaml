@@ -35,7 +35,7 @@ jobs:
       - name: validate only prerelease semver bump for publishing @next
         run: |
           [[ ${{github.event_name}} == "push" ]] && exit 0
-          [[ $SEMVER_BUMP == "prerelease" ]] && exit 1
+          [[ $SEMVER_BUMP == "prerelease" ]] && exit 1 || exit 0
       - name: validate changesets for release
         run: |
           [[ $SEMVER_BUMP == "prerelease" ]] && exit 0
