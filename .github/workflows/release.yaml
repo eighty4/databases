@@ -42,7 +42,8 @@ jobs:
         run: |
           [[ ${{github.event_name}} == "push" ]] && exit 0
           VERSION=$(npm version $SEMVER_BUMP --no-git-tag-version)
-          git diff $(git rev-list -n 1 $(git describe --tags --abbrev=0)) CHANGELOG.md | grep "## $VERSION"
+          PRIOR_RELEASE_TAG=$(curl -s https://api.github.com/repos/eighty4/databases/releases | jq -r '.[] | select(.prerelease == false) | .tag_name')
+          git diff $(git rev-list -n 1 "$PRIOR_RELEASE_TAG") CHANGELOG.md | grep "## $VERSION"
 
   verified:
     uses: ./.github/workflows/verify.yaml
