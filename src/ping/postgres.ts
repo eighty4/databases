@@ -1,7 +1,7 @@
 import {Socket} from 'net'
-import type PingResult from '../PingResult.js'
+import {type PingResult} from './pingResult.js'
 
-interface PostgresProps {
+export interface PostgresProps {
     port: number
     username: string
 }
@@ -25,7 +25,7 @@ export function pingPostgres(props: PostgresProps): Promise<PingResult> {
         socket.on('error', (e: any) => {
             result = {
                 engine: 'postgres',
-                errorMessage: e.message
+                errorMessage: e.message,
             }
             closeSocketAndPromise()
         })

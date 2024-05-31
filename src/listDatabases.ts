@@ -1,7 +1,6 @@
 import {pingPostgres} from './ping/postgres.js'
-import PingResult from './PingResult.js'
-import type {DatabaseContainer, DatabaseImages} from './docker.js'
-import {listDatabaseContainers, listDatabaseImages} from './docker.js'
+import {type PingResult} from './ping/pingResult.js'
+import {type DatabaseContainer, type DatabaseImages, listDatabaseContainers, listDatabaseImages} from './docker.js'
 
 export interface ListDatabasesResult {
     docker: {

@@ -1,5 +1,5 @@
 import Docker from 'dockerode'
-import {Database, supportedDatabases} from './Database.js'
+import {type Database, supportedDatabases} from './database.js'
 
 const databaseImageNames: Record<string, Database> = {
     'cassandra': 'cassandra',

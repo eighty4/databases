@@ -1,4 +1,4 @@
-import {listDatabases} from './listDatabases.js'
+import {listDatabases} from '../listDatabases.js'
 
 export default async () => {
     const result = await listDatabases()

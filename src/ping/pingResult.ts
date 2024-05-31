@@ -1,6 +1,6 @@
-import type {Database} from './Database.js'
+import {type Database} from '../database.js'
 
-export default interface PingResult {
+export interface PingResult {
     engine: Database
     errorMessage?: string
     verified?: {
