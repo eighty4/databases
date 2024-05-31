@@ -1,6 +1,6 @@
 {
   "name": "@eighty4/databases",
-  "version": "0.0.4-12",
+  "version": "0.0.4-13",
   "description": "APIs for database-driven developer experience",
   "keywords": [
     "cassandra",
