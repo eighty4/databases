@@ -24,10 +24,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build --clean && tsc --build",
-    "check": "tsc --noEmit",
-    "dev:list": "tsx dev/list.ts",
-    "dev:migrate": "tsx dev/migrate.ts",
-    "dev:start": "tsx dev/start.ts"
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "@types/dockerode": "^3.3.23",
@@ -35,7 +32,6 @@
     "dockerode": "^4.0.0"
   },
   "devDependencies": {
-    "tsx": "^4.1.2",
     "typescript": "^5.2.2"
   },
   "files": [
