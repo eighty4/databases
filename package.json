@@ -24,6 +24,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build --clean && tsc --build",
+    "build:watch": "pnpm build --watch",
     "check": "tsc --noEmit"
   },
   "dependencies": {
