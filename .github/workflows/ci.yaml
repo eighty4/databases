@@ -3,8 +3,10 @@ name: CI
 on:
   push:
     branches: [ main ]
-    paths-ignore:
-      - ".*ignore"
+    paths:
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - "src/**"
 
 jobs:
 
