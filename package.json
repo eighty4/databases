@@ -1,7 +1,7 @@
 {
   "name": "@eighty4/databases",
   "version": "0.0.4-12",
-  "description": "Management APIs for local database-driven development",
+  "description": "APIs for database-driven developer experience",
   "keywords": [
     "cassandra",
     "cockroachdb",
