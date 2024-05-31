@@ -20,11 +20,13 @@
   ],
   "license": "BSD-3-Clause",
   "type": "module",
+  "bin": "lib/bin.js",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build --clean && tsc --build",
     "build:watch": "pnpm build --watch",
+    "dev": "node lib/bin.js",
     "check": "tsc --noEmit"
   },
   "dependencies": {
