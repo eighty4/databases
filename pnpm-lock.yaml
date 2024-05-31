@@ -14,6 +14,9 @@ importers:
       '@types/node':
         specifier: ^20.12.13
         version: 20.12.13
+      commander:
+        specifier: ^12.1.0
+        version: 12.1.0
       dockerode:
         specifier: ^4.0.2
         version: 4.0.2
@@ -63,6 +66,10 @@ packages:
 
   chownr@1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
+
+  commander@12.1.0:
+    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
 
   cpu-features@0.0.10:
     resolution: {integrity: sha512-9IkYqtX3YHPCzoVg1Py+o9057a3i0fp7S530UWokCSaFVTc7CwXPRiOjRjBQQ18ZCNafx78YfnG+HALxtVmOGA==}
@@ -208,6 +215,8 @@ snapshots:
     optional: true
 
   chownr@1.1.4: {}
+
+  commander@12.1.0: {}
 
   cpu-features@0.0.10:
     dependencies:
