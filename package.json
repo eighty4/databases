@@ -43,8 +43,8 @@
     "pnpm-lock.yaml",
     "README.md",
     "tsconfig.json",
-    "src/*.ts",
-    "lib/*.d.ts",
-    "lib/*.js"
+    "src/**/*.ts",
+    "lib/**/*.d.ts",
+    "lib/**/*.js"
   ]
 }
