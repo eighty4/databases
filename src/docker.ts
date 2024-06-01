@@ -43,6 +43,17 @@ export interface ImageDetail {
     tag: string
 }
 
+export interface ContainerDetail {
+    id: string
+    name: string
+    image: ImageDetail
+}
+
+export interface ImageRequest {
+    database: Database
+    tag?: string
+}
+
 export async function listDatabaseImages(): Promise<Array<DatabaseImages>> {
     const docker = new Docker()
     const images = await docker.listImages({digests: true})
@@ -108,4 +119,45 @@ export async function listDatabaseContainers(images: Array<DatabaseImages>): Pro
         }
     }
     return result
+}
+
+export async function pullDatabaseImage({database, tag = 'latest'}: ImageRequest): Promise<ImageDetail> {
+    const name = Object.keys(databaseImageNames)
+        .find(imageName => databaseImageNames[imageName] === database)
+    if (!name) {
+        throw new Error(`image name for database ${database} not found`)
+    }
+
+    const docker = new Docker()
+    await docker.pull(`${name}:${tag}`)
+
+    const inefficientLookup = await listDatabaseImages()
+    const found = inefficientLookup
+        .find((image) => image.database == database)?.images
+        .find((image) => image.name === name && image.tag === tag)
+
+    if (found) {
+        return found
+    } else {
+        console.warn(`WARN ${name}:${tag} not found via listDatabaseImages`)
+        return {name, tag} as ImageDetail
+    }
+}
+
+export async function startDatabaseContainer(image: ImageDetail): Promise<ContainerDetail> {
+    if (!Object.keys(databaseImageNames).includes(image.name)) {
+        throw new Error(`${image.name} is not supported`)
+    }
+
+    const docker = new Docker()
+    const container = await docker.createContainer({
+        Image: `${image.name}:${image.tag || 'latest'}`,
+    })
+    await container.start()
+
+    return {
+        id: container.id,
+        name: (await container.inspect()).Name,
+        image,
+    }
 }
