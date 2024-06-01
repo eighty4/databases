@@ -26,7 +26,7 @@
   "scripts": {
     "build": "tsc --build --clean && tsc --build",
     "build:watch": "pnpm build --watch",
-    "dev": "node lib/bin.js",
+    "dev": "node lib/cli/cli.js",
     "check": "tsc --noEmit"
   },
   "dependencies": {

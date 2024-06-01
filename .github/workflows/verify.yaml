@@ -38,3 +38,4 @@ jobs:
       - run: corepack enable && corepack prepare pnpm@latest --activate
       - run: pnpm i -P
       - run: pnpm build
+      - run: pnpm dev -h
