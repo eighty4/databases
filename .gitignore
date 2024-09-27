@@ -4,3 +4,5 @@ node_modules
 *.tsbuildinfo
 lib
 !dev/*.ts
+
+test/vms/.vagrant
