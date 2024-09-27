@@ -30,13 +30,13 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/dockerode": "^3.3.29",
-    "@types/node": "^20.12.13",
+    "@types/dockerode": "^3.3.31",
+    "@types/node": "^22.7.4",
     "commander": "^12.1.0",
     "dockerode": "^4.0.2"
   },
   "devDependencies": {
-    "typescript": "^5.4.5"
+    "typescript": "^5.6.2"
   },
   "files": [
     "CHANGELOG.md",
