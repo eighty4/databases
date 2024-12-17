@@ -22,10 +22,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: corepack enable && corepack prepare pnpm@latest --activate
+          node-version: 22
+          cache: pnpm
       - run: pnpm i -P
       - run: pnpm build
       - run: pnpm dev -h
@@ -34,9 +35,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+          cache: pnpm
       - name: install virtualbox
         run: |
           sudo apt-get -qq update && sudo apt-get -qq -y install virtualbox
@@ -45,9 +48,6 @@ jobs:
           wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
           echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
           sudo apt-get -qq update && sudo apt-get -qq -y install vagrant
-      - name: install pnpm
-        run: |
-          corepack enable && corepack prepare pnpm@latest --activate
       - run: pnpm i
       - run: pnpm build
       - run: vagrant up
@@ -58,9 +58,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: corepack enable && corepack prepare pnpm@latest --activate
+          node-version: 22
+          cache: pnpm
       - run: pnpm i
       - run: pnpm check
