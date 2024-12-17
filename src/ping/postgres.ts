@@ -13,13 +13,12 @@ export function pingPostgres(props: PostgresProps): Promise<PingResult> {
             return
         }
         let result: PingResult
-        let error: string
         const socket = new Socket({})
         const closeSocketAndPromise = () => socket.end(() => {
             if (result) {
                 res(result)
             } else {
-                rej(new Error(error || 'unhandled scenario'))
+                rej(new Error('unhandled scenario'))
             }
         })
         socket.on('error', (e: any) => {
